@@ -10,12 +10,24 @@ describe('sinon tests', () => {
         student = {
             dropClass: (classId, callback) => {
                 !!callback.dropClass ? callback.dropClass() : callback();
+            },
+
+            addClass: (schedule) => {
+                if(!schedule.classIsFull()) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
-        }
+        };
 
         schedule = {
             dropClass: () => {
                 console.log('class dropped');
+            },
+
+            classIsFull: () => {
+                return true;
             }
         }
     });
@@ -57,6 +69,26 @@ describe('sinon tests', () => {
                 // sinon goes in, grabs the method, wraps it in a spy, and replaces
                 // the method with the wrapped spy.
             schedule.dropClass.called.should.be.true;
+        });
+    });
+
+    // stubs are a way to watch an entire object
+    // stubs have all the functionalities that a spy does.
+    // It's more common to use stubs since we generally work with entire objects instead of lone functions
+    describe('student with stubs', () => {
+        it('should call a stubbed method', () => {
+            // sinon.stub will go through every method on the object and replace it with a stub function
+            let stub = sinon.stub(schedule);
+            student.dropClass(1, stub);
+            stub.dropClass.called.should.be.true;
+        });
+
+        it('should return true when the class is not full', () => {
+            let stub = sinon.stub(schedule);
+            stub.classIsFull.returns(false);
+
+            let returnVal = student.addClass(stub);
+            returnVal.should.be.true;
         });
     });
 });
