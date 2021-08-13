@@ -18,7 +18,7 @@ To get the site running locally:
 ### How do I run your tests?
 Once you've cloned this repo onto your local machine, make sure you're inside of the working directory and type `mocha test/test.mjs`.
 
-In the event you have multiple test files, you can run them all together. This repo contains `test.mjs` and `moreTests.mjs`.
+In the event you have multiple test files, you can run them all together. This repo contains `test.mjs`, `moreTests.mjs`, and `sinonTests.mjs`.
 To run both, simply type `mocha test/test.mjs test/moreTests.mjs test/sinonTests.mjs`. You will find that both test files run successfully.
 
 This can get messy if you have a LOT of tests. So alternatively, the shorthand version by typing `mocha` will suffice as `mocha` will look for the `test` folder and run all tests inside of it.
