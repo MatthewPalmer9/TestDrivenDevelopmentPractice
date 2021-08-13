@@ -1,0 +1,25 @@
+{
+  "name": "test-driven-development",
+  "version": "1.0.0",
+  "description": "test-driven development",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^4.3.4"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice.git"
+  },
+  "author": "Matthew Palmer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice/issues"
+  },
+  "homepage": "https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice#readme"
+}
