@@ -7,3 +7,6 @@ Make sure to `npm install mocha chai`. If cloning this repo, simply `npm i` the 
 
 ### How do I run your tests?
 Once you've cloned this repo onto your local machine with `git clone https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice`, make sure you're inside of the working directory and type `mocha test.mjs`.
+
+In the event you have multiple test files, you can run them all together. This repo contains `test.mjs` and `moreTests.mjs`.
+To run both, simply type `mocha test.mjs moreTests.mjs`. You will find that both test files run successfully.
