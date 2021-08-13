@@ -3,4 +3,4 @@ This repo serves only as record of my TDD practice. Please explore it to your he
 
 ## Self-Notes
 ### Mocha & Chai
-Make sure to `npm install mocha chai`. If cloning this repo, simply `npm i` the dependencies in `package.json`.
+Make sure to `npm install mocha chai`. If cloning this repo, simply `npm i` the dependencies in `package.json`. Also, `npm install mocha -g` so that Mocha is installed globally & so you can use mocha from the command line.
