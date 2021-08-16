@@ -4,3 +4,6 @@ This repo serves only as record of my TDD practice. Please explore it to your he
 ### Repo Directory
 - [Node/JavaScript Testing](https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice/tree/master/Node)
 - [Python Testing](https://github.com/MatthewPalmer9/TestDrivenDevelopmentPractice/tree/master/Python) **YOU ARE HERE**
+
+## Getting Started
+In order to run python tests, type `python -m unittest` inside of the terminal. It will look for all tests inside of the `test/` folder.
