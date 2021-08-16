@@ -28,4 +28,6 @@ To run both, simply type `mocha test/test.mjs test/moreTests.mjs test/sinonTests
 This can get messy if you have a LOT of tests. So alternatively, the shorthand version by typing `mocha` will suffice as `mocha` will look for the `test` folder and run all tests inside of it.
 
 ### How do I automate your tests?
-There are three dependencies installed to make this possible. `gulp`, `gulp-mocha` and `gulp-util`. There is some code written in `gulpfile.js` that will automate testing and re-run tests is ANYTHING changes in `test/*.mjs`, which just watches all files for changes that end in `.mjs`. To start the automated testing, type `gulp watch-mocha` into your terminal.
+There are three dependencies installed to make this possible. `gulp`, `gulp-mocha` and `gulp-util`. There is some code written in `gulpfile.js` that will automate testing and re-run tests is ANYTHING changes in `test/*.mjs`, which just watches all files for changes that end in `.mjs`. To start the automated testing, type `gulp watch-mocha` into your terminal. There is a default gulp task built to shorten that command. You can start automated testing by just typing `gulp` as well.
+
+To exit testing, press `CTRL + C`.
