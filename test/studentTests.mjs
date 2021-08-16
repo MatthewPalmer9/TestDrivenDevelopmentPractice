@@ -30,4 +30,10 @@ describe("Student", () => {
         student.name.should.equal(STUDENT_NAME);
         student.grade.should.equal(STUDENT_GRADE);
     });
+
+    it("should increase the student's grade by 1 when advanceGrade is called", () => {
+        const student = new Student(STUDENT_NAME, STUDENT_GRADE);
+        student.advanceGrade();
+        student.grade.should.equal(STUDENT_GRADE+1);
+    });
 });
