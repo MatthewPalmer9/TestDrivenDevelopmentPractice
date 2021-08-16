@@ -2,14 +2,15 @@
 This repo serves only as record of my TDD practice. Please explore it to your heart's content. This repo was developed upon via a course on [PluralSight](https://app.pluralsight.com/).
 
 ## Dependencies 
-| Dependency | URL      |
-|-----------|-----------|
-| mocha     | [Link](https://www.npmjs.com/package/mocha) |
-| chai      | [Link](https://www.npmjs.com/package/chai) |
-| sinon     | [Link](https://www.npmjs.com/package/sinon) |
-| gulp      | [Link](https://www.npmjs.com/package/gulp) |
-| gulp-mocha      | [Link](https://www.npmjs.com/package/gulp-mocha) |
-| gulp-util      | [Link](https://www.npmjs.com/package/gulp-util) |
+| Dependency | URL       |
+|------------|-----------|
+| mocha      | [Link](https://www.npmjs.com/package/mocha)      |
+| chai       | [Link](https://www.npmjs.com/package/chai)       |
+| sinon      | [Link](https://www.npmjs.com/package/sinon)      |
+| gulp       | [Link](https://www.npmjs.com/package/gulp)       |
+| gulp-mocha | [Link](https://www.npmjs.com/package/gulp-mocha) |
+| gulp-util  | [Link](https://www.npmjs.com/package/gulp-util)  |
+| uuid       | [Link](https://www.npmjs.com/package/uuid)       |
 
 ## Getting started
 To get this project running locally:
