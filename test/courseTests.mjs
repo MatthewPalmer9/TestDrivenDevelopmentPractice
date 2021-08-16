@@ -37,11 +37,23 @@ class Course {
             times = [times];
         }
 
+        const VALID_DAYS = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ];
+
         days.forEach(day => {
+            if(!VALID_DAYS.includes(day)) { throw new Error(day+ " is not a valid day.") };
+            
             times.forEach(time => {
                 this.times.push({
                     "day": day,
-                    "time": times
+                    "time": time
                 });
             });
         });
@@ -130,6 +142,30 @@ describe("Course", () => {
 
             expect(() => {
                 course.unregisterStudent("asdf");
+            }).to.throw();
+        })
+    });
+
+    describe('addTimes', () => {
+        it('should add the given days and times to the course', () => {
+            const course = new Course(COURSE_NAME, COURSE_CODE, COURSE_DESC);
+            const days = ["Monday", "Wednesday", "Friday"];
+            const times = ["10:00AM", "2:00PM"]
+
+            course.addTimes(days, times);
+
+            course.times.length.should.equal(days.length*times.length);
+            course.times[2].should.eql({
+                day: "Wednesday", time: "10:00AM"
+            });
+        });
+
+        it('should not add a non-day to the times array', () => {
+            const course = new Course(COURSE_NAME, COURSE_CODE, COURSE_DESC);
+            const day = "fabulousday", time = "10:00AM";
+
+            expect(() => {
+                course.addTimes(day, time)
             }).to.throw();
         })
     });
