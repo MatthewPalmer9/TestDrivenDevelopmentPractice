@@ -91,4 +91,30 @@ describe('sinon tests', () => {
             returnVal.should.be.true;
         });
     });
+
+    // Mocks are different from stubs or spies in that you can set up some expectations. 
+    // You can say a method should be called a certain number of times.
+    // Mocks determine that those expectations were met successfully.
+    // Mocks are generally not used but very rarely.
+    // Stubs accomplish the job for us in most cases.
+    describe('student with mocks', () => {
+        it('mocks schedule', () => {
+            let mockObj = sinon.mock(schedule);
+            let expectation = mockObj.expects('classIsFull').once();
+
+            // Mock has modified our object, so we can pass schedule directly
+            student.addClass(schedule); 
+
+            // This checks that classIsFull() only gets called once.
+            expectation.verify();
+        });
+    });
+
+    /* UNCOMMENT THIS BLOCK WHILE GULP IS RUNNING TO SEE AUTOMATED TESTS RUNNING */
+    
+    // describe('mocha auto runs when something is changed', () => {
+    //     it('succeeds', () => {
+    //         expect(true).to.be.true;
+    //     }); 
+    // });
 });

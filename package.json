@@ -5,6 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "chai": "^4.3.4",
+    "gulp": "4.0.2",
+    "gulp-mocha": "^8.0.0",
+    "gulp-util": "^3.0.8",
     "sinon": "^11.1.2"
   },
   "devDependencies": {
