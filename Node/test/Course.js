@@ -1,4 +1,4 @@
-class Course {
+export default class Course {
     constructor(name, code, description) {
         this.name = name;
         this.code = code;
@@ -25,21 +25,33 @@ class Course {
         if(!Array.isArray(days)) {
             days = [days];
         }
-
+        
         if(!Array.isArray(times)) {
             times = [times];
         }
-
+        
+        const VALID_DAYS = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ];
+        
         days.forEach(day => {
+            if(!VALID_DAYS.includes(day)) { throw new Error(day+ " is not a valid day.") };
+                    
             times.forEach(time => {
                 this.times.push({
                     "day": day,
-                    "time": times
+                    "time": time
                 });
             });
         });
     };
-
+    
     showSchedule = () => {
         let scheduleStr = "";
         let first = true;
@@ -69,5 +81,3 @@ class Course {
         return studentStr;
     }
 };
-
-export default Course;

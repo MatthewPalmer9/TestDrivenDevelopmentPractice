@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-class Student {
+export default class Student {
     constructor(name, grade) {
         this.name = name;
         this.grade = grade;
@@ -15,5 +15,3 @@ class Student {
         return this.id + "\t" + this.name;
     }
 }
-
-export default Student;
