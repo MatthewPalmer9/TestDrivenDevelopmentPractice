@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 class Student {
     constructor(name, grade) {
         this.name = name;

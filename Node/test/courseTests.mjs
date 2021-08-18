@@ -1,7 +1,6 @@
 'use strict';
 
 import chai, { expect } from 'chai';
-import { v4 as uuid } from 'uuid';
 import Course from './Course.js';
 import Student from './Student.js';
 
