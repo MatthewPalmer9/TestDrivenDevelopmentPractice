@@ -1,4 +1,5 @@
 def buildApp() {
+    sh 'cd Node'
     sh 'npm install'
 } 
 
