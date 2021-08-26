@@ -4,9 +4,9 @@ pipeline {
 
     stages {
         stage("build") {
-            dir("${env.WORKSPACE}/Node") {
-                sh 'pwd'
-            }
+            sh 'pwd'
+            sh "cd ${env.WORKSPACE}/Node"
+            sh 'pwd'
         }
 
         // stage("test") {
