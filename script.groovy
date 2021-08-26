@@ -1,10 +1,9 @@
 def buildApp() {
-    sh 'cd Node'
-    sh 'npm install'
+    echo 'npm install'
 } 
 
 def testApp() {
-    sh 'npm test'
+    echo 'npm test'
 }
 
 return this

@@ -9,6 +9,7 @@ pipeline {
                 script {
                     gv = load "script.groovy"
                 }
+                echo 'cd Node'
             }
         }
         stage("build") {
