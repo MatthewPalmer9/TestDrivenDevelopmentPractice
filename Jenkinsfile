@@ -9,7 +9,6 @@ pipeline {
                 script {
                     gv = load "script.groovy"
                 }
-                sh 'cd Node'
             }
         }
         stage("build") {
