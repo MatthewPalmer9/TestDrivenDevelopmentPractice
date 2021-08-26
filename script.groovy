@@ -3,7 +3,7 @@ def buildApp() {
 } 
 
 def testApp() {
-    sh 'mocha'
+    sh 'npm test'
 }
 
 return this
