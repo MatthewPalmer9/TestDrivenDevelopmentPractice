@@ -5,19 +5,15 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                sh 'cd Node'
-                sh 'npm install'
+                sh 'ls'
             }
         }
 
-        stage("test") {
-            steps {
-                script {
-                    sh 'cd Node'
-                    sh 'npm test'
-                }
-            }
-        }
+        // stage("test") {
+        //     steps {
+        //         sh 'npm test'
+        //     }
+        // }
 
         // stage("deploy") {
         //     steps {
