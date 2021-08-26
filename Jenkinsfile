@@ -1,4 +1,3 @@
-def gv
 pipeline {
 
     agent any
@@ -6,29 +5,19 @@ pipeline {
     stages {
         stage("init") {
             steps {
-                script {
-                    gv = load "script.groovy"
-                }
-                echo 'cd Node'
+                sh 'cd Node'
             }
         }
         stage("build") {
             steps {
-                script {
-                    gv.buildApp()
-                }
+                sh 'npm install'
             }
         }
 
         stage("test") {
-            // when {
-            //     expression {
-            //         BRANCH_NAME == 'master'
-            //     }
-            // }
             steps {
                 script {
-                    gv.testApp()
+                    sh 'npm test'
                 }
             }
         }
