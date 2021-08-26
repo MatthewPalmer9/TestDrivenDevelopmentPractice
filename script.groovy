@@ -4,6 +4,7 @@ def buildApp() {
 } 
 
 def testApp() {
+    sh 'cd Node'
     sh 'mocha'
 }
 
