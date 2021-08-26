@@ -4,8 +4,8 @@ pipeline {
 
     stages {
         stage("build") {
-            dir('Node') {
-                sh 'npm install'
+            dir("${env.WORKSPACE}/Node") {
+                sh 'pwd'
             }
         }
 
