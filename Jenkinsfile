@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage("build") {
             steps {
+                sh 'cd Node'
                 sh 'ls'
             }
         }
