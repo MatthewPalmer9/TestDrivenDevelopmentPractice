@@ -3,13 +3,9 @@ pipeline {
     agent any
 
     stages {
-        stage("init") {
-            steps {
-                sh 'cd Node'
-            }
-        }
         stage("build") {
             steps {
+                sh 'cd Node'
                 sh 'npm install'
             }
         }
@@ -17,6 +13,7 @@ pipeline {
         stage("test") {
             steps {
                 script {
+                    sh 'cd Node'
                     sh 'npm test'
                 }
             }
