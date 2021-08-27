@@ -8,33 +8,37 @@ pipeline {
         booleanParam(name: 'executeDeploy', defaultValue: true, description: '')
     }
     stages {
-        stage("build") {
-            try {
+        def buildSuccess = stage("build") {
+            steps {
                 dir("Node") {
                     sh 'npm install'
                 }
-            } catch(Exception e) {
-                params.executeTests = false
             }
+        }
+        if(buildSuccess == 'Failed') {
+            error 'Build failed'
         }
 
         stage("test") {
-            try {
+            when { // this will only allow "test" execute if build was successful
+                expression {
+                    params.executeTests
+                }
+            }
+
+            def testResult = steps {
                 dir("Node") {
                     sh 'npm test'
                 }
-            } catch(Exception e) {
-                params.executeDeploy = false
-                params.executeDeploy.description = "tests have failed"
             }
+            if(testResult == 'Failed') { error "test failed" }
         }
 
-        stage("deploy") {
-            steps {
-                if(!params.executeDeploy) { error "${params.executeDeploy.description}" }
-                else { echo "Deploy successful" }
-            }
-        }
+        // stage("deploy") {
+        //     steps {
+                
+        //     }
+        // }
     }
 
     // post { // executes after all the stages are done
