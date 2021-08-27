@@ -49,6 +49,9 @@ pipeline {
             steps {
                 echo "Deploying new version ${VERSION}"
             }
+            post {
+                
+            }
         }
     }
 }
