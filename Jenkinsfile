@@ -1,6 +1,8 @@
+def nextStageExecutes = false;
+
 pipeline {
     agent any
-    
+
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on production.')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
@@ -11,7 +13,9 @@ pipeline {
         stage("build") {
             steps {
                 dir("Node") {
-                    sh 'npm install'
+                    sh 'npm install' 
+                    // What if this fails? What code can I use to catch this
+                    // so that it doesn't move to the "test" stage?
                 }
             }
         }
