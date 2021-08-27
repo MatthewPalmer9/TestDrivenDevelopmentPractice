@@ -28,7 +28,7 @@ pipeline {
                     }
                 } catch(Exception e) {
                     params.executeDeploy = false
-                    params.executeDeploy.description = "tests have failed".
+                    params.executeDeploy.description = "tests have failed"
                 }
             }
         }
