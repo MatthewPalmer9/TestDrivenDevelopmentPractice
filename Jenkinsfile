@@ -1,4 +1,3 @@
-def nextStageExecutes = false;
 
 pipeline {
     agent any
@@ -9,6 +8,7 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
         booleanParam(name: 'executeDeploy', defaultValue: true, description: '')
     }
+
     stages {
         stage("build") {
             steps {
@@ -17,6 +17,8 @@ pipeline {
                         try {
                             sh 'npm install'
                         } catch(err) {
+                            params.executeTests = false
+                            params.executeDeploy = false
                             error "Build stage failed. LOG: ${err}"
                         }
                     }
@@ -32,16 +34,23 @@ pipeline {
             }
             steps {
                 dir("Node") {
-                    sh 'npm test'
+                    script {
+                        try {
+                            sh 'npm test'
+                        } catch(err) {
+                            params.executeDeploy = false
+                            error "Test stage failed. LOG: ${err}"
+                        }
+                    }
                 }
             }
         }
 
-        // stage("deploy") {
-        //     steps {
-                
-        //     }
-        // }
+        stage("deploy") {
+            steps {
+                echo "Deploying version ${VERSION}"
+            }
+        }
     }
 
     // post { // executes after all the stages are done
