@@ -9,27 +9,27 @@ pipeline {
     }
     stages {
         stage("build") {
-            steps {
-                try {
+            try {
+                steps {
                     dir("Node") {
                         sh 'npm install'
                     }
-                } catch(Exception e) {
-                    params.executeTests = false
-                }
+                } 
+            } catch(Exception e) {
+                params.executeTests = false
             }
         }
 
         stage("test") {
-            steps {
-                try {
+            try {
+                steps {
                     dir("Node") {
                         sh 'npm test'
                     }
-                } catch(Exception e) {
-                    params.executeDeploy = false
-                    params.executeDeploy.description = "tests have failed"
                 }
+            } catch(Exception e) {
+                params.executeDeploy = false
+                params.executeDeploy.description = "tests have failed"
             }
         }
 
