@@ -13,15 +13,14 @@ pipeline {
         stage("build") {
             steps {
                 dir("Node") {
-                    script { 
-                        try {
-                            sh 'npm install'
-                        } catch(err) {
-                            params.executeTests = false
-                            params.executeDeploy = false
-                            error "Build stage failed. LOG: ${err}"
-                        }
-                    }
+                    echo 'Hello from Build Stage'
+                    sh 'npm build'
+                }
+            }
+            post {
+                failure {
+                    echo "Build failed..."
+                    params.executeTests = false
                 }
             }
         }
@@ -34,14 +33,15 @@ pipeline {
             }
             steps {
                 dir("Node") {
-                    script {
-                        try {
-                            sh 'npm test'
-                        } catch(err) {
-                            params.executeDeploy = false
-                            error "Test stage failed. LOG: ${err}"
-                        }
-                    }
+                    echo "Hello from Test Stage"
+                    sh 'npm test'
+                }
+            }
+            post {
+                success { echo "Tests successful!" }
+                failure { 
+                    echo "Tests failed..." 
+                    params.executeDeploy = false
                 }
             }
         }
@@ -52,8 +52,4 @@ pipeline {
             }
         }
     }
-
-    // post { // executes after all the stages are done
-
-    // }
 }
