@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                def buildSuccess = dir("Node") {
-                    sh 'npm install'
+                dir("Node") {
+                    def buildSuccess = sh 'npm install'
                 }
                 if(buildSuccess == 'Failed') {
                     error 'Build failed'
@@ -27,8 +27,8 @@ pipeline {
             }
 
             steps {
-                def testResult = dir("Node") {
-                    sh 'npm test'
+                dir("Node") {
+                    def testResult = sh 'npm test'
                 }
                 if(testResult == 'Failed') { error "test failed" }
             }
