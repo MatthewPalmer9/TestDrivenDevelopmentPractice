@@ -13,10 +13,12 @@ pipeline {
         stage("build") {
             steps {
                 dir("Node") {
-                    try {
-                        sh 'npm install'
-                    } catch(err) {
-                        error "Build stage failed. LOG: ${err}"
+                    script { 
+                        try {
+                            sh 'npm install'
+                        } catch(err) {
+                            error "Build stage failed. LOG: ${err}"
+                        }
                     }
                 }
             }
