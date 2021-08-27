@@ -10,11 +10,9 @@ pipeline {
     stages {
         stage("build") {
             try {
-                steps {
-                    dir("Node") {
-                        sh 'npm install'
-                    }
-                } 
+                dir("Node") {
+                    sh 'npm install'
+                }
             } catch(Exception e) {
                 params.executeTests = false
             }
@@ -22,10 +20,8 @@ pipeline {
 
         stage("test") {
             try {
-                steps {
-                    dir("Node") {
-                        sh 'npm test'
-                    }
+                dir("Node") {
+                    sh 'npm test'
                 }
             } catch(Exception e) {
                 params.executeDeploy = false
