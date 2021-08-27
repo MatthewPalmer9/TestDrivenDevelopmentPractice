@@ -13,9 +13,11 @@ pipeline {
         stage("build") {
             steps {
                 dir("Node") {
-                    sh 'npm install' 
-                    // What if this fails? What code can I use to catch this
-                    // so that it doesn't move to the "test" stage?
+                    try {
+                        sh 'npm install'
+                    } catch(err) {
+                        error "Build stage failed. LOG: ${err}"
+                    }
                 }
             }
         }
