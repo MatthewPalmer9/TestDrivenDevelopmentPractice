@@ -20,7 +20,7 @@ pipeline {
             post {
                 failure {
                     echo "Build failed..."
-                    params.executeTests = false
+                    script { params.executeTests = false }
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                 success { echo "Tests successful!" }
                 failure { 
                     echo "Tests failed..." 
-                    params.executeDeploy = false
+                    script { params.executeDeploy = false }
                 }
             }
         }
