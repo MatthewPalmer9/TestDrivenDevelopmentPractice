@@ -8,15 +8,15 @@ pipeline {
         booleanParam(name: 'executeDeploy', defaultValue: true, description: '')
     }
     stages {
-        def buildSuccess = stage("build") {
+        stage("build") {
             steps {
-                dir("Node") {
+                def buildSuccess = dir("Node") {
                     sh 'npm install'
                 }
+                if(buildSuccess == 'Failed') {
+                    error 'Build failed'
+                }
             }
-        }
-        if(buildSuccess == 'Failed') {
-            error 'Build failed'
         }
 
         stage("test") {
@@ -26,12 +26,12 @@ pipeline {
                 }
             }
 
-            def testResult = steps {
-                dir("Node") {
+            steps {
+                def testResult = dir("Node") {
                     sh 'npm test'
                 }
+                if(testResult == 'Failed') { error "test failed" }
             }
-            if(testResult == 'Failed') { error "test failed" }
         }
 
         // stage("deploy") {
