@@ -1,6 +1,6 @@
 pipeline {
-
     agent any
+    
     parameters {
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy on production.')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
@@ -11,10 +11,7 @@ pipeline {
         stage("build") {
             steps {
                 dir("Node") {
-                    def buildSuccess = sh 'npm install'
-                }
-                if(buildSuccess == 'Failed') {
-                    error 'Build failed'
+                    sh 'npm install'
                 }
             }
         }
@@ -25,12 +22,10 @@ pipeline {
                     params.executeTests
                 }
             }
-
             steps {
                 dir("Node") {
-                    def testResult = sh 'npm test'
+                    sh 'npm test'
                 }
-                if(testResult == 'Failed') { error "test failed" }
             }
         }
 
