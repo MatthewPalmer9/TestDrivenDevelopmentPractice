@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -48,7 +47,7 @@ pipeline {
 
         stage("deploy") {
             steps {
-                echo "Deploying version ${VERSION}"
+                echo "Deploying new version ${VERSION}"
             }
         }
     }
