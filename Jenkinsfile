@@ -50,11 +50,6 @@ pipeline {
             steps {
                 echo "Deploying version ${VERSION}"
             }
-            post {
-                failure {
-                    echo "Previous stages have failed..."
-                }
-            }
         }
     }
 }
