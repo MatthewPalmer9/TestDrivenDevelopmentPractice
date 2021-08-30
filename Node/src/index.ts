@@ -7,7 +7,7 @@ async function main() {
     for(const browserType of [chromium, webkit, firefox]) {
         //  browser
         const browser = await browserType.launch();
-        console.log(`Running ${browserType}...`);
+        console.log(`Running ${browserType.name()}...`);
 
         // Create a context
         const context = await browser.newContext();
@@ -15,17 +15,9 @@ async function main() {
         const page = await context.newPage();
 
         const newPage = await page.goto(URL)
-                            .then(resp => console.log(resp?.ok()))
-                            .catch(err => console.log(err));
-
-        console.log(newPage)
+                        .then(resp => console.log("Response 200:", resp?.ok()))
+                        .catch(err => console.log(err));
         await browser.close();
-
-        // // Carry out actions
-        // await page.goto('http://whatsmyuseragent.org/');
-        // await page.screenshot({ path: `output/${browserType.name()}.png`});
-
-        // await browser.close();
     }
 }
 main()
