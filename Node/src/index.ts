@@ -7,9 +7,9 @@ async function main() {
     for(const browserType of [chromium, webkit, firefox]) {
         //  browser
         const browser = await browserType.launch();
-        console.log(`Running ${browserType.name()} now....`);
+        console.log(`Running ${browserType.name()} now.....`);
 
-        // Create a context
+        // Create a 
         const context = await browser.newContext();
         // Create a page
         const page = await context.newPage();
