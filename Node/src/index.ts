@@ -2,6 +2,8 @@ import * as playwright from 'playwright';
 
 async function main() {
     const { chromium, webkit, firefox } = playwright;
+    const URL = "http://localhost:5500/Node/src/"
+
     for(const browserType of [chromium, webkit, firefox]) {
         //  browser
         const browser = await browserType.launch();
@@ -12,7 +14,7 @@ async function main() {
         // Create a page
         const page = await context.newPage();
 
-        const newPage = await page.goto("http://whatsmyuseragent.org")
+        const newPage = await page.goto(URL)
                             .then(resp => console.log(resp?.ok()))
                             .catch(err => console.log(err));
 

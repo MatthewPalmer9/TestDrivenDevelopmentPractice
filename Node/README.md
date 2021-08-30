@@ -42,6 +42,8 @@ There are three dependencies installed to make this possible. `gulp`, `gulp-moch
 To exit testing, press `CTRL + C`.
 
 ### How can I perform cross-browser tests?
+This repository relies on Live Server extension in Visual Studio Code. When running `index.html` from Live Server, it should live at `http://localhost:5500/Node/src/`. That is the URL set in `index.ts`. You can change this as needed.
+ 
 In this repository, we use Playwright with TypeScript + TS-Node. We first create our `tsconfig.json` file with `npx tsc --init --sourceMap --rootDir src --outDir lib`. To run it **while using experimental modules**, run `node --loader ts-node/esm ./src/index.ts`. If your project does not use experimental modules, `npx ts-node ./src/index.ts` will work just fine.
 
 **NOTE:** The configurations in `tsconfig.json` were altered from the default to include functionality with ESNext Modules.
