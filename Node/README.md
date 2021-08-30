@@ -14,8 +14,11 @@ This repo serves only as record of my TDD practice. Please explore it to your he
 | gulp       | [Link](https://www.npmjs.com/package/gulp)       |
 | gulp-mocha | [Link](https://www.npmjs.com/package/gulp-mocha) |
 | gulp-util  | [Link](https://www.npmjs.com/package/gulp-util)  |
+| playwright | [Link](https://www.npmjs.com/package/playwright) |
 | uuid       | [Link](https://www.npmjs.com/package/uuid)       |
 | istanbul   | [Link](https://www.npmjs.com/package/istanbul)   |
+| typescript | [Link](https://www.npmjs.com/package/typescript) |
+| ts-node    | [Link](https://www.npmjs.com/package/ts-node)    |
 
 ## Getting started
 To get this project running locally:
@@ -37,3 +40,8 @@ This can get messy if you have a LOT of tests. So alternatively, the shorthand v
 There are three dependencies installed to make this possible. `gulp`, `gulp-mocha` and `gulp-util`. There is some code written in `gulpfile.js` that will automate testing and re-run tests is ANYTHING changes in `test/*.mjs`, which just watches all files for changes that end in `.mjs`. To start the automated testing, type `gulp watch-mocha` into your terminal. There is a default gulp task built to shorten that command. You can start automated testing by just typing `gulp` as well.
 
 To exit testing, press `CTRL + C`.
+
+### How can I perform cross-browser tests?
+In this repository, we use Playwright with TypeScript + TS-Node. We first create our `tsconfig.json` file with `npx tsc --init --sourceMap --rootDir src --outDir lib`. To run it **while using experimental modules**, run `node --loader ts-node/esm ./src/index.ts`. If your project does not use experimental modules, `npx ts-node ./src/index.ts` will work just fine.
+
+**NOTE:** The configurations in `tsconfig.json` were altered from the default to include functionality with ESNext Modules.
